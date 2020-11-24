@@ -1,10 +1,15 @@
 window.onload = init
 
 function init() {
-    document.querySelector('.btn-secondary').addEventListener('click', () => {
-        window.location.href = './login.html'
-    })
-    document.querySelector('.btn-primary').addEventListener('click', signin)
+    if (localStorage.getItem('token')) {
+        document.querySelector('.btn-secondary').addEventListener('click', () => {
+            window.location.href = './login.html'
+        })
+        document.querySelector('.btn-primary').addEventListener('click', signin)
+        load_pokemons()
+    } else {
+        window.location.href = 'index.html'
+    }
 }
 function signin() {
     var mail = document.getElementById('input-mail').value

@@ -20,7 +20,12 @@ function login() {
             user_password: pass
         }
     }).then(res => {
-        console.log(res);
+        if (res.data.code === 200) {
+            localStorage.setItem('token', res.data.message)
+            window.location.href = 'pokedex.html'
+        }else{
+            alert('Usuario y/o contraseña incorrectos 😕')
+        }
 
     }).catch(err => {
         console.error(err);
